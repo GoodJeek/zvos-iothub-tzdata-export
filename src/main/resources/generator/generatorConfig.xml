@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+    <!-- <properties resource="generator/db.properties"/>-->
+
+    <context id="Oracle" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <!-- TKmybatis配置 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.zvos.iothub.tzdata.export.mapper.base.ZvosOracleMapper"/>
+            <property name="caseSensitive" value="true"/>
+        </plugin>
+
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!-- 数据库链接URL、用户名、密码 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@(DESCRIPTION =
+                                        (ADDRESS_LIST =
+                                          (ADDRESS = (PROTOCOL = TCP)(HOST = 172.30.220.101 )(PORT = 1521))
+                                        )
+                                        (CONNECT_DATA =
+                                          (SERVER = DEDICATED)
+                                          (SERVICE_NAME = tzzl)
+                                        ))"
+                        userId="zl_molaly"
+                        password="zl_molaly">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置 -->
+        <javaModelGenerator targetPackage="com.zvos.iothub.tzdata.export.model" targetProject="src/main/java"/>
+        <!-- 生成的映射文件包名和位置 -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
+        <!-- 生成DAO的包名和位置 -->
+        <javaClientGenerator targetPackage="com.zvos.iothub.tzdata.export.mapper" targetProject="src/main/java"
+                             type="XMLMAPPER"/>
+        <!-- 要生成的那些表 -->
+
+        <table tableName="ALY_WORKTIME_202001" domainObjectName="AlyWorkTime">
+            <generatedKey column="UUID" sqlStatement="SELECT 1 FROM DUAL" identity="true"/>
+        </table>
+        <!--        <table tableName="Z_SYS_LOG" domainObjectName="SysLog" >
+                    <generatedKey column="UUID" sqlStatement="SELECT 1 FROM DUAL" identity="true"/>
+                </table>
+                <table tableName="Z_USR_LOGINLOG" domainObjectName="UsrLoginLog" >
+                    <generatedKey column="UUID" sqlStatement="SELECT 1 FROM DUAL" identity="true"/>
+                </table>
+                <table tableName="Z_USR_ADMIN" domainObjectName="UsrAdmin" >
+                    <generatedKey column="UUID" sqlStatement="SELECT 1 FROM DUAL" identity="true"/>
+                </table>-->
+    </context>
+</generatorConfiguration>

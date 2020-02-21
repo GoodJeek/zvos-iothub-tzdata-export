@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zvos.iothub.tzdata.export.mapper.AlyWorkTimeMapper">
+  <resultMap id="BaseResultMap" type="com.zvos.iothub.tzdata.export.model.AlyWorkTime">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <result column="CD_VP_UNIQUENO" jdbcType="VARCHAR" property="cdVpUniqueno" />
+    <result column="WT_NORMALWORKTIME" jdbcType="DECIMAL" property="wtNormalworktime" />
+    <result column="WT_NORMALOFFSETWORKTIME" jdbcType="DECIMAL" property="wtNormaloffsetworktime" />
+    <result column="WT_TOTALWORKTIME" jdbcType="DECIMAL" property="wtTotalworktime" />
+    <result column="WT_LASTTIME" jdbcType="DATE" property="wtLasttime" />
+    <result column="WT_INSERTTIME" jdbcType="DATE" property="wtInserttime" />
+    <result column="WT_DAY" jdbcType="VARCHAR" property="wtDay" />
+    <result column="PROVINCE" jdbcType="VARCHAR" property="province" />
+    <result column="CITY" jdbcType="VARCHAR" property="city" />
+    <result column="AREA" jdbcType="VARCHAR" property="area" />
+    <result column="FUELLEVEL" jdbcType="DECIMAL" property="fuellevel" />
+    <result column="WT_THEORYOFFSETWORKTIME" jdbcType="DECIMAL" property="wtTheoryoffsetworktime" />
+  </resultMap>
+
+  <select id="searchSegmentedTable" resultMap="BaseResultMap">
+    select
+      *
+    from
+      ALY_WORKTIME_${date}
+  </select>
+
+</mapper>
